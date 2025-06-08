@@ -28,19 +28,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => unsubscribe();
   }, []);
 
-  const signUp = async (data: SignupFormData): Promise<FirebaseUser | AuthError> => {
-    setLoading(true);
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      setUser(userCredential.user);
-      return userCredential.user;
-    } catch (error) {
-      return error as AuthError;
-    } finally {
-      setLoading(false);
-    }
-  };
-  
+const signUp = async (data: SignupFormData): Promise<FirebaseUser | AuthError> => {
+  setLoading(true);
+  try {
+    const { email, password } = data; // ✅ Only take email and password
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    setUser(userCredential.user);
+    return userCredential.user;
+  } catch (error) {
+    return error as AuthError;
+  } finally {
+    setLoading(false);
+  }
+};
+
   const logIn = async (data: LoginFormData): Promise<FirebaseUser | AuthError> => {
     setLoading(true);
     try {

@@ -33,8 +33,10 @@ export default function SignupForm() {
 
   const onSubmit = async (data: SignupFormData) => {
     setIsLoading(true);
-    const result = await signUp(data);
+    const { email, password } = data;
+    const result = await signUp({ email, password });
     setIsLoading(false);
+
     if ('code' in result) { // AuthError
       const errorCode = (result as AuthError).code;
       let errorMessage = "Signup failed. Please try again.";
@@ -54,6 +56,7 @@ export default function SignupForm() {
       router.push("/login");
     }
   };
+
 
   return (
     <Card className="w-full max-w-md mx-auto">

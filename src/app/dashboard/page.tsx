@@ -59,13 +59,21 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <section className="pb-8">
-        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl mb-4">
-          Dashboard
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Welcome, {user?.email || "User"}! Manage your monitored services below.
-        </p>
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+                Dashboard
+              </h1>
+              <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+                Welcome back, <span className="font-medium text-primary">{user?.email || "User"}</span>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
       </section>
 
       <section>
